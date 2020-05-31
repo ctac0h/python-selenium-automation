@@ -5,7 +5,7 @@ from time import sleep
 
 SEARCH_INPUT = (By.NAME, 'q')
 SEARCH_SUBMIT = (By.NAME, 'btnK')
-RESULTS_FOUND_MESSAGE = (By.XPATH, "//div[contains(@class,'commercial-unit-desktop-top')]")
+RESULTS_FOUND_MESSAGE = (By.XPATH, "//*[@id='search']")
 RESULTS = (By.XPATH, "//div[@class='g']")
 
 
