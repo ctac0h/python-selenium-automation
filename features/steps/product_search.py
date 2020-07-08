@@ -7,6 +7,7 @@ SEARCH_INPUT = (By.ID, 'twotabsearchtextbox')
 SEARCH_SUBMIT = (By.XPATH, "//*[@value='Go']")
 RESULTS_INFO_TEXT = (By.CSS_SELECTOR, ".a-color-state.a-text-bold")
 FIRST_RESULT = (By.XPATH, "//div[contains(@class,'s-main-slot')]/div[@data-index='2']")
+SEARCH_RESULTS = (By.CSS_SELECTOR, '[data-component-type="s-search-result"]')
 
 
 @given('Open Amazon page')
@@ -38,3 +39,15 @@ def verify_found_results_text(context, search_word):
     results_msg = context.driver.find_element(*RESULTS_INFO_TEXT).text
     assert search_word in results_msg, "Expected word '{}' in message, but got '{}'".format(search_word, results_msg)
 
+
+@then('Verify number of elements is equal to {number}')
+def count_elements(context, number):
+    search_results = context.driver.find_elements(*SEARCH_RESULTS)
+    results_len = len(search_results)
+    print(results_len)
+    if results_len == 60:
+        print('Everything is on the page')
+    elif results_len > 0:
+        print('Some elements are located')
+    else:
+        print("Nothing is found on the page")
