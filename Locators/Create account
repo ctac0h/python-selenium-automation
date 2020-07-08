@@ -1,0 +1,12 @@
+AMAZON_LOGO = (By.CSS_SELECTOR, 'i.a-icon-logo')
+CREATE_ACCOUNT = (By.CSS_SELECTOR, 'h1.a-spacing-small')
+YOUR_NAME = (By.NAME, 'customerName')
+EMAIL = (By.ID, 'ap_email')
+PASSWORD = (By.ID, 'ap_password')
+PASSWORD_INFO = (By.CSS_SELECTOR, '.auth-inlined-information-message > .a-box-inner')
+RE_ENTER_PASSWORD = (By.ID, 'ap_password_check')
+CREATE_ACCOUNT_BUTTON = (By.ID, 'continue')
+CONDITIONS_OF_USE = (By.XPATH, '//div[@id="legalTextRow"]/a[1]')
+PRIVACY_NOTICE = (By.XPATH, '//div[@id="legalTextRow"]/a[2]')
+SIGN_IN = (By.CSS_SELECTOR, '.a-link-emphasis')
+

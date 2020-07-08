@@ -11,6 +11,7 @@ driver.get("https://www.amazon.com/gp/help/customer/display.html")
 search_box = driver.find_element(By.CSS_SELECTOR, '#helpsearch')
 search_box.send_keys(text_to_search)
 
+
 go_button = driver.find_element(By.XPATH, "//*[@id='helpSearchSubmit']//input")
 go_button.click()
 
