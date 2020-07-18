@@ -25,7 +25,7 @@ def verify_name_and_regular(context):
     if fail_list:
         for i in fail_list:
             print(i)
-    assert not fail_list
+    assert not fail_list, 'Not all products have Name or Price'
 
 
 
