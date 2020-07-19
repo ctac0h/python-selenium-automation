@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
+import features.steps.wrapper
 
 
 def browser_init(context):
@@ -9,6 +10,7 @@ def browser_init(context):
     context.driver = webdriver.Chrome()
     # context.browser = webdriver.Safari()
     # context.browser = webdriver.Firefox()
+    features.steps.wrapper.driver = context.driver
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
