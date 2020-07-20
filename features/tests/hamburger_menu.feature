@@ -1,6 +1,8 @@
-Feature: Locate a hamburger menu sign
+Feature: Hamburger menu
 
 
-  Scenario: Locate a hamburger menu sign
+  Scenario: Verify Amazon Music sub menu has 6 items
     Given Open Amazon page
-    Then Locate a hamburger menu
+    When Open hamburger menu
+    And Click on menu item with text Amazon Music
+    Then Verify 6 items are present

@@ -10,25 +10,6 @@ FIRST_RESULT = (By.XPATH, "//div[contains(@class,'s-main-slot')]/div[@data-index
 SEARCH_RESULTS = (By.CSS_SELECTOR, '[data-component-type="s-search-result"]')
 
 
-@given('Open Amazon page')
-def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
-
-
-@when('Input {search_word} into search field')
-def input_search(context, search_word):
-    search = context.driver.find_element(*SEARCH_INPUT)
-    search.clear()
-    search.send_keys(search_word)
-    sleep(4)
-
-
-@when('Click on search icon')
-def click_search_icon(context):
-    context.driver.find_element(*SEARCH_SUBMIT).click()
-    sleep(1)
-
-
 @when('Click on first result')
 def first_result_click(context):
     context.driver.find_element(*FIRST_RESULT).click()
@@ -36,8 +17,7 @@ def first_result_click(context):
 
 @then('Product results for {search_word} are shown')
 def verify_found_results_text(context, search_word):
-    results_msg = context.driver.find_element(*RESULTS_INFO_TEXT).text
-    assert search_word in results_msg, "Expected word '{}' in message, but got '{}'".format(search_word, results_msg)
+    context.app.search_results.verify_found_results_text(search_word)
 
 
 @then('Verify number of elements is equal to {number}')

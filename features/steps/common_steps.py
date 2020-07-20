@@ -3,6 +3,11 @@ from behave import given, then, when
 from selenium.webdriver.support import expected_conditions as EC
 
 
+@given('Open Amazon page')
+def open_amazon(context):
+    context.app.page.open_page()
+
+
 @then('Save current window handles')
 def save_windows(context):
     context.original_windows = context.driver.window_handles
@@ -21,6 +26,14 @@ def switch_window(context):
 def close_window_and_switch_back(context):
     context.driver.close()
     context.driver.switch_to_window(context.current_window)
+
+
+@then("Verify {expected_page_title} page opened")
+def verify_page(context, expected_page_title):
+    actual_page_title = context.driver.title
+    assert actual_page_title == expected_page_title, f"Expected title is: {expected_page_title}, but got " \
+                                                     f"{actual_page_title}"
+
 
 
 

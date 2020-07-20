@@ -3,7 +3,6 @@ Feature: Test Scenarios for Amazon Search functionality
 
   Scenario: User can search for a product
     Given Open Amazon page
-    When Input Rainbow Dash into search field
-    And Click on search icon
+    When Search for Rainbow Dash
     Then Product results for "Rainbow Dash" are shown
     And Verify number of elements is equal to 60

@@ -8,8 +8,7 @@ Feature: Test scenarios for Cart feature
 
   Scenario: Add product into the Cart
     Given Open Amazon page
-    When Input Rainbow Dash into search field
-    And Click on search icon
+    When Search for Rainbow Dash
     And Click on first result
     And Click on Add to cart
     And Click on Cart icon

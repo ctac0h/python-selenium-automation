@@ -1,13 +1,13 @@
-from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
 
 
-HAMBURGER_MENU = (By.ID, 'sssnav-hamburger-menu')
+@when('Click on menu item with text {text}')
+def click_on_item_by_text(context, text):
+    context.app.hmenu.click_element_by_text(text)
 
 
-@then('Locate a hamburger menu')
-def locate_item(context):
-    context.driver.find_element(*HAMBURGER_MENU)
+@then('Verify {number} items are present')
+def verify_number_of_items(context, number):
+    context.app.hmenu.verify_number_of_items(number)
 
 

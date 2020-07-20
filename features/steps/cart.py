@@ -3,8 +3,7 @@ from behave import given, when, then
 
 
 CART_PAGE_URL = 'https://www.amazon.com/gp/cart/view.html'
-CART_BUTTON = (By.ID, 'nav-cart')
-EMPTY_CART = (By.CSS_SELECTOR, '.sc-your-amazon-cart-is-empty')
+
 ADD_TO_CART = (By.ID, "add-to-cart-button")
 PRODUCT_TITLE = (By.CSS_SELECTOR, 'span.sc-product-title')
 
@@ -14,11 +13,6 @@ def open_cart(context):
     context.driver.get(CART_PAGE_URL)
 
 
-@when('Click on Cart icon')
-def click_on_cart(context):
-    context.driver.find_element(*CART_BUTTON).click()
-
-
 @when('CLick on Add to cart')
 def click_on_add_to_cart(context):
     context.driver.find_element(*ADD_TO_CART).click()
@@ -26,8 +20,7 @@ def click_on_add_to_cart(context):
 
 @then('Verify Cart is empty and {expected_text} displayed')
 def verify_empty_cart(context, expected_text):
-    actual_text = context.driver.find_element(*EMPTY_CART).text
-    assert actual_text == expected_text, 'Cart is not empty'
+    context.app.cart.verify_empty_cart(expected_text)
 
 
 @then('Verify presence of {product_title} in the cart')
