@@ -8,6 +8,11 @@ def open_amazon(context):
     context.app.page.open_page()
 
 
+@given('Open Amazon Product {pid} page')
+def open_product_page(context, pid):
+    context.app.product_page.open_product(pid)
+
+
 @then('Save current window handles')
 def save_windows(context):
     context.original_windows = context.driver.window_handles

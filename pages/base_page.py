@@ -1,3 +1,5 @@
+from selenium.webdriver import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -6,6 +8,8 @@ class Page:
     def __init__(self, driver):
         self.driver = driver
         self.base_url = 'https://www.amazon.com/'
+        self.wait = WebDriverWait(self.driver,10)
+        self.actions = ActionChains(self.driver)
 
     def open_page(self, url=''):
         self.driver.get(self.base_url + url)
@@ -24,6 +28,9 @@ class Page:
     def wait_for_element(self, locator):
         return self.driver.wait.until(EC.visibility_of_element_located(locator))
 
+    def wait_for_element_present(self, locator):
+        return self.driver.wait.until(EC.presence_of_element_located(locator))
+
     def wait_for_elements(self, locator):
         return self.driver.wait.until(EC.visibility_of_any_elements_located(locator))
 
@@ -32,3 +39,8 @@ class Page:
 
     def wait_for_element_to_disappear(self, locator):
         return self.driver.wait.until(EC.invisibility_of_element(locator))
+
+    def verify_text(self, expected_text: str, *locator):
+        actual_text = self.find_element(*locator).text
+        assert expected_text == actual_text, f'Expected text "{expected_text}", but got "{actual_text}"'
+
