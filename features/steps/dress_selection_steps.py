@@ -8,11 +8,6 @@ COLOR_OPTIONS = (By.CSS_SELECTOR, '#variation_color_name li')
 SELECTED_COLOR = (By.CSS_SELECTOR, '#variation_color_name span.selection')
 
 
-@given('Open Amazon Product {pid} page')
-def open_product_page(context, pid):
-    context.driver.get(f'https://www.amazon.com/gp/product/{pid}/')
-
-
 @then('Verify user can select through {colors}')
 def verify_color_selection(context, colors):
     expected_colors = json.loads(colors)
